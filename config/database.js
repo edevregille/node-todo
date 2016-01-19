@@ -6,6 +6,7 @@ if(process.env.VCAP_SERVICES){
 	} 
 	if(services['mongodb-2.4']){
 		var uri = services['mongodb-2.4'][0].credentials.url;
+		console.log("Using the experimental service and uri is "+uri);
 	}
 	//else {
 	//	uri = process.env.MONGO_URI;
