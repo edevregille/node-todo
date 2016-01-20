@@ -10,8 +10,9 @@ if(process.env.VCAP_SERVICES){
 	}
 	if(services['user-provided']){
 		var cm = services['user-provided'][0].credentials;
-		var dbname = todoapp;
+		var dbname = 'todoapp';
 		var uri = 'mongodb://' + cm.user + ':' + cm.password + '@' + cm.uri + ':' + cm.port + '/' + dbname;
+		console.log("Using the compose mongodb service and uri is "+uri);
 	}
 	//else {
 	//	uri = process.env.MONGO_URI;
