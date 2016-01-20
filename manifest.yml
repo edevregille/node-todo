@@ -1,10 +1,10 @@
 applications:
-- name:      todoappmanu
+- name:      todoappmanu123
 
 # you may need to use a different hostname, if someone has already used this one
 
-  host:      todoappmanu
+  host:      todoappmanu123
   command:   node server --verbose -d mongo
   memory:    128M
   services:
-  - MongoLab-on
+  - MongoDB by Compose-2w
