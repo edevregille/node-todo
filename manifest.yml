@@ -5,6 +5,6 @@ applications:
 
   host:      todoappmanu123
   command:   node server --verbose -d mongo
-  memory:    128M
+  memory:    1G
   services:
   - MongoDB by Compose-2w
