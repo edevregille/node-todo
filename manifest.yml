@@ -1,9 +1,9 @@
 applications:
-- name:      todoappmanu123
+- name:      todoappmanu
 
 # you may need to use a different hostname, if someone has already used this one
 
-  host:      todoappmanu123
+  host:      todoappmanu
   command:   node server --verbose -d mongo
   memory:    1G
   services:
