@@ -4,8 +4,9 @@ You can deploy the todo list application either as a Cloud Foundry application o
 
 ## Cloud Foundry with CLI
 Clone locally the application on your machine
-
+'''
   git clone 
-  
+'''
+
 
 
