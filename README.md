@@ -1,6 +1,6 @@
 
 # Deploy a Node.js app on Bluemix with a Mongo DB
-You can deploy the todo list application either as a Cloud Foundry application or as a containerized application on Bluemix.
+You can deploy the todo list application either as a Cloud Foundry application or as a Docker application on Bluemix.
 
 You need an account on the Bluemix platform (http://www.ibm.com/bluemix). 
 
@@ -35,6 +35,48 @@ Go back to your command line and go into the root of your source code applicatio
 
 Your application is deployed!
 
+
+## Docker Container
+Install Cloud Foundry CLI (https://www.ng.bluemix.net/docs/starters/install_cli.html) and install the IBM Container plugin (https://www.ng.bluemix.net/docs/containers/container_cli_ov.html).
+
+Clone the source code on your local machine
+
+```
+  git clone https://github.com/edevregille/node-todo.git
+```
+
+Login on the Cloud Foundry platform (UK data center API hereunder)
+
+```
+  cf login -a https://api.eu-gb.bluemix.net
+```
+
+Login on the IBM Container service:
+```
+  cf ic login
+```
+
+Create a mongo database using the web dashboard (Mongo by Compose) and bind it to a runtime (Node.js, Java... does not matter). This runtime will be used by our container to access the Mongo DB credentials.
+
+Create a Docker image from the application using the Dockerfile already created:
+```
+  docker build -t ./<PATH_DOCKERFILE> <IMAGE_NAME>
+```
+
+Tag your image with the URL of your Bluemix private image registry
+```
+  docker tag <IMAGE_NAME> <URL_REGISTRY>/<NAME_SPACE>/<IMAGE_NAME>
+```
+
+Push your image to your Bluemix private registry:
+```
+  docker push <URL_REGISTRY>/<NAME_SPACE>/<IMAGE_NAME>
+```
+
+Create a Docker container from your pushed image by running the following command:
+```
+  cf ic run --name <NAME_CONTAINER> -p 8080:8080 -e CCS_BIND_APP=<BRIDGE_APP> <IMAGE_NAME>
+```
 
 
 
